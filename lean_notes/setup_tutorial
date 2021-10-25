@@ -1,0 +1,44 @@
+#### Nix + Lean4 ####
+
+Install nix and git
+
+Enter nix shell
+
+Initialize new nix flake and templated leanpkg
+
+Ref Usage: https://leanprover.github.io/lean4/doc/setup.html
+opening into the "lean shell": 
+- nix-shell https://github.com/leanprover/lean4/archive/master.tar.gz -A nix
+
+Visual Studio Code: binary is built and opened automagically with
+Editor: "nix run .#vscode-dev MyPackage.lean"
+
+Keys to "nix build":
+git add xxxx.lean (wasnt doing this before. do not copy the file like the first stream lol)
+nix build .#executable
+files must be added to git for the build command to work
+
+configuring "lean4 extension": in vscode
+run "elan which lean" and add that to your "extension settings"
+in vscode, reload after updating path to the lean4 executable
+"lean4 extension anage extension settings"
+CTRL + SHFT + P -> Developer: Reload window
+then reload the window
+Visual Studio Code: Trusted window must be accepted to enable the lean4 extension (a prompt page inside your editor shoud load with this option)
+trust and reload extension (extension tab)
+
+#### Question and Answers During Streams: ####
+
+Question: what is the status of the MyPackage.lean directory (why is this part of the 'nix build' command)
+error: getting status of '/nix/store/hidgqsg6d0v1qn1qrvr1dbily5kx87l4-source/MyPackage.lean': No such file or directory
+Answer: Building requires git add
+
+Question:
+what is the -t flag in the nix setup
+- references template in the remote directory (flakes in the remote repos)
+Answer: template from remote is fetched?
+
+Question: during a build the x.lean files have to be copied to the location of the nix directory?
+Answer: No they only have to be added or "
+
+
